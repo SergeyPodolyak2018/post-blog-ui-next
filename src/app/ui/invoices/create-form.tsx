@@ -1,7 +1,9 @@
 'use client';
-import React, { useState, useRef, useMemo } from 'react';
-import JoditEditor from 'jodit-react';
+import React, { useState, useRef, useMemo, useLayoutEffect } from 'react';
+
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 
 import { Button } from '@/app/ui/button';
 
@@ -15,6 +17,7 @@ export default function Form(props: {
 }) {
   const editor = useRef(null);
   const [content, setContent] = useState(props.data?.article || '');
+
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/docs/,
     placeholder: 'Start typings...',
@@ -94,15 +97,6 @@ export default function Form(props: {
           </label>
           <div className='relative'>
             {
-              /* <textarea
-              id='article'
-              name='article'
-              rows={10}
-              cols={50}
-              defaultValue={props?.data?.article || ''}
-              placeholder='Enter Article'
-              className='peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
-            /> */
               <JoditEditor
                 ref={editor}
                 value={content}

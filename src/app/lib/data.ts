@@ -21,11 +21,10 @@ export async function fetchBlog() {
 export async function fetchSingleBlog(id: string) {
   try {
     const url = addParamsToUrl(PATH['api'] + SUB_PATH['blog'] + `/${id}`, []);
-    console.log('Fetch blog url = ' + url);
+
     const data = await fetch(url, {
       signal: AbortSignal.timeout(10000),
     });
-    console.log(data);
 
     const rez: TBlogPatched = await data.json();
     return rez;

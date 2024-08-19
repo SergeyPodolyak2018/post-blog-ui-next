@@ -1,12 +1,6 @@
 'use client';
 import React from 'react';
-//import { fetchAgregatedDataBreeds } from '@/app/lib/data';
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import styles from '@/app/breed/cats/[id]/page.module.css';
-import InfoCard from '@/app/ui/infoCard';
-import { UNIT_FIELDS } from '@/app/lib/const';
-import { fetchSingleBlog } from '@/app/lib/data';
 import Form from '@/app/ui/invoices/create-form';
 import { createBlogPost, updateBlogPost } from '@/app/lib/actions';
 import { TBlogPatched } from '../lib/definitions';
